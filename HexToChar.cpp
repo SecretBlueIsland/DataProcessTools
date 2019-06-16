@@ -1,7 +1,8 @@
 ﻿// HexToChar.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
 //
 #define _CRT_SECURE_NO_WARNINGS
-
+#define CRTDBG_MAP_ALLOC
+#include <crtdbg.h>
 #include <iostream>
 
 #define	BUFFSIZE	2048
@@ -65,5 +66,7 @@ int main(int argc, char* argv[])
 	}
 
 	delete[] buf;
+	delete[] out_buf;
+	_CrtDumpMemoryLeaks();
 	return 0;
 }
