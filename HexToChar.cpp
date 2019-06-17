@@ -5,7 +5,7 @@
 #include <crtdbg.h>
 #include <iostream>
 
-#define	BUFFSIZE	2048
+#define	BUFFSIZE	64
 
 int main(int argc, char* argv[])
 {
@@ -47,7 +47,7 @@ int main(int argc, char* argv[])
 				}
 				else
 				{
-					out_buf[2 * i] = high + 'A';
+					out_buf[2 * i] = high - 0x0A + 'A';
 				}
 
 				unsigned char low = buf[i] & 0x0f;
@@ -57,11 +57,13 @@ int main(int argc, char* argv[])
 				}
 				else
 				{
-					out_buf[2 * i + 1] = low + 'A';
+					out_buf[2 * i + 1] = low - 0x0A + 'A';
 				}
 			}
 
 			fwrite(out_buf, 1, 2 * num, out_fp);
+		//	fwrite("\r\n", 2, 1, out_fp);
+
 		}
 	}
 
